@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#051b34"/>
+    </linearGradient>
+  </defs>
+  <rect width="100" height="100" rx="28" fill="url(#brandGrad)"/>
+  <circle cx="50" cy="50" r="32" fill="white" fill-opacity="0.16"/>
+  <!-- Map Pin & Navigation Arrow -->
+  <path d="M50 22 C37.85 22 28 31.85 28 44 C28 58.5 46.5 74.8 48.8 76.8 C49.5 77.4 50.5 77.4 51.2 76.8 C53.5 74.8 72 58.5 72 44 C72 31.85 62.15 22 50 22 Z" fill="#ffffff"/>
+  <!-- Inside compass cursor -->
+  <polygon points="50,32 58,48 50,44 42,48" fill="#051b34"/>
+</svg>

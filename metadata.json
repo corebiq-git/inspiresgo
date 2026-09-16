@@ -1,0 +1,6 @@
+{
+  "name": "InspireGO",
+  "description": "Modern and clean travel mobile app experience to discover destinations, plan journeys, book packages, Umrah services, E-visa, flight tracking, and AI travel guidance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

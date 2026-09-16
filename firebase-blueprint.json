@@ -1,0 +1,103 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile and account preferences for InspireGO",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "avatarUrl": { "type": "string" },
+        "nationality": { "type": "string" },
+        "passportNumber": { "type": "string" },
+        "loyaltyPoints": { "type": "number" },
+        "preferredCurrency": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "fullName", "email"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "User package or Umrah service booking record",
+      "type": "object",
+      "properties": {
+        "bookingId": { "type": "string" },
+        "userId": { "type": "string" },
+        "itemType": { "type": "string", "enum": ["package", "umrah", "flight", "visa"] },
+        "itemId": { "type": "string" },
+        "title": { "type": "string" },
+        "destination": { "type": "string" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "travelersCount": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "currency": { "type": "string" },
+        "paymentMethod": { "type": "string", "enum": ["upi", "card", "netbanking", "applepay"] },
+        "paymentStatus": { "type": "string", "enum": ["paid", "pending", "failed"] },
+        "bookingStatus": { "type": "string", "enum": ["confirmed", "in_progress", "completed", "cancelled"] },
+        "transactionRef": { "type": "string" },
+        "qrCodeData": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["bookingId", "userId", "title", "totalAmount", "paymentStatus", "bookingStatus"]
+    },
+    "VisaApplication": {
+      "title": "VisaApplication",
+      "description": "Electronic visa application entry",
+      "type": "object",
+      "properties": {
+        "applicationId": { "type": "string" },
+        "userId": { "type": "string" },
+        "destinationCountry": { "type": "string" },
+        "visaCategory": { "type": "string" },
+        "applicantName": { "type": "string" },
+        "passportNumber": { "type": "string" },
+        "nationality": { "type": "string" },
+        "arrivalDate": { "type": "string" },
+        "status": { "type": "string", "enum": ["submitted", "under_review", "approved", "rejected"] },
+        "referenceNo": { "type": "string" },
+        "feePaid": { "type": "number" },
+        "submittedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["applicationId", "userId", "destinationCountry", "applicantName", "status"]
+    },
+    "SavedItem": {
+      "title": "SavedItem",
+      "description": "Bookmarked travel destination or package",
+      "type": "object",
+      "properties": {
+        "savedId": { "type": "string" },
+        "userId": { "type": "string" },
+        "targetId": { "type": "string" },
+        "targetType": { "type": "string" },
+        "title": { "type": "string" },
+        "location": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "rating": { "type": "number" },
+        "price": { "type": "number" },
+        "savedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["savedId", "userId", "targetId", "title"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile documents keyed by Auth UID"
+    },
+    "/users/{userId}/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Personal bookings and tickets of the user"
+    },
+    "/users/{userId}/visaApplications/{applicationId}": {
+      "schema": "VisaApplication",
+      "description": "Personal e-visa applications submitted by the user"
+    },
+    "/users/{userId}/savedItems/{savedId}": {
+      "schema": "SavedItem",
+      "description": "Personal wishlist and bookmarked destinations"
+    }
+  }
+}
